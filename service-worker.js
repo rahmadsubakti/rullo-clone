@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/rullo-clone/precache-manifest.4b6e6ed28b091c973adb185e9a0ac6bf.js"
+  "/rullo-clone/precache-manifest.ebc0cf6fa9c7ebe4a4e8570690f1a097.js"
 );
 
 self.addEventListener('message', (event) => {
