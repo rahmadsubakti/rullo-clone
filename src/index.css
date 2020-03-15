@@ -1,13 +1,13 @@
 /* Customize the label (the container) */
 body {
 	background: black;
+	color: white;
 }
 
 #root {
 	position: absolute;
 	transform: translateY(50%);
 	left: 40%;
-
 }
 
 .grid {
@@ -137,5 +137,9 @@ button:disabled, button[disabled]:hover {
 
 h1 {
 	color: white;
+}
+
+#help {
+	text-align: center;
 }
 /* Style the checkmark/indicator */
