@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d28a3d3686a64436ec9ffad55ebef467",
+    "revision": "2ab4d1887ff5b8f24f82906fe73b8e1d",
     "url": "/rullo-clone/index.html"
   },
   {
