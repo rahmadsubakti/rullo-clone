@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "872275df9cae3b37e16728e684626596",
+    "revision": "95394b66d26b1823bff101225f67f4ab",
     "url": "/rullo-clone/index.html"
   },
   {
-    "revision": "70ddc5c3b5bc1d8df2ee",
-    "url": "/rullo-clone/static/css/main.2a6be18f.chunk.css"
+    "revision": "293ca3b529392b045880",
+    "url": "/rullo-clone/static/css/main.f951bbd7.chunk.css"
   },
   {
     "revision": "2dcabe5d98ceef36e6f9",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/rullo-clone/static/js/2.a91aa3d0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "70ddc5c3b5bc1d8df2ee",
-    "url": "/rullo-clone/static/js/main.1526f811.chunk.js"
+    "revision": "293ca3b529392b045880",
+    "url": "/rullo-clone/static/js/main.a0a30a3a.chunk.js"
   },
   {
     "revision": "43814f330b297f9dd80c",
