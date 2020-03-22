@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { genAnswerGrid, genGrid } from './utils/GenGame.js';
 import { CheckBox } from './component/CustomCheckbox.js';
 import { Modal } from './component/Modal.js';
@@ -7,120 +7,121 @@ import _ from 'underscore';
 import './App.css';
 
 function sumRow(row) {
-  return row.reduce((c, val) => c += val)
+    return row.reduce((c, val) => c += val)
 }
 
 function gen2DArray(num) {
-  let result = [];
-  for (let i=0; i<num; i++) {
-    result.push(Array(num).fill(0))
-  }
-  return result
+    let result = [];
+    for (let i = 0; i < num; i++) {
+        result.push(Array(num).fill(0))
+    }
+    return result
 }
 
 const isTrue = (value) => value === true;
 
 const ARRZERO = gen2DArray(5);
 
-const CORRECT = {border: "1px solid yellow", color: "yellow"}
-const INCORRECT = {border: "1px solid white", color: "white"}
-
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.answer = genAnswerGrid();
+    constructor(props) {
+        super(props);
+        this.answer = genAnswerGrid();
 
-    this.grid = genGrid(this.answer)
+        this.grid = genGrid(this.answer)
 
-    this.state = {history: [ARRZERO], grid: ARRZERO}
+        this.state = { history: [ARRZERO], grid: ARRZERO }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.reset = this.reset.bind(this);
-    this.undo = this.undo.bind(this);
-    this.newGame = this.newGame.bind(this);
-    this.rowSumAnswer = () => this.answer.map(sumRow);
-    this.colSumAnswer = () => _.zip(...this.answer).map(sumRow);
-  }
+        this.handleChange = this.handleChange.bind(this);
+        this.reset = this.reset.bind(this);
+        this.undo = this.undo.bind(this);
+        this.newGame = this.newGame.bind(this);
+        this.rowSumAnswer = () => this.answer.map(sumRow);
+        this.colSumAnswer = () => _.zip(...this.answer).map(sumRow);
+    }
 
-  handleChange(event) {
-    let [row,col] = event.target.name; 
-    row = Number(row);
-    col = Number(col);
-    const newArr = this.state.grid.slice();
-    let arrRow = newArr[row].slice();
-    arrRow[col] = event.target.checked ? Number(event.target.value) : 0;
-    newArr[row] = arrRow;
+    handleChange(event) {
+        let [row, col] = event.target.name;
+        row = Number(row);
+        col = Number(col);
+        const newArr = this.state.grid.slice();
+        let arrRow = newArr[row].slice();
+        arrRow[col] = event.target.checked ? Number(event.target.value) : 0;
+        newArr[row] = arrRow;
 
-    let history = this.state.history.slice();
-    history.push(newArr);
+        let history = this.state.history.slice();
+        history.push(newArr);
 
-    this.setState({grid: newArr, history: history})
-  }
+        this.setState({ grid: newArr, history: history })
+    }
 
-  reset(event) {
-    this.setState({history: [ARRZERO], grid: ARRZERO});
-  }
+    reset(event) {
+        this.setState({ history: [ARRZERO], grid: ARRZERO });
+    }
 
-  undo(event) {
-    let history = this.state.history.slice();
-    history.pop();
-    let pastGrid = history[history.length - 1];
+    undo(event) {
+        let history = this.state.history.slice();
+        history.pop();
+        let pastGrid = history[history.length - 1];
 
-    this.setState({history: history, grid: pastGrid})
-  }
+        this.setState({ history: history, grid: pastGrid })
+    }
 
-  newGame() {
-    this.answer = genAnswerGrid();
-    this.grid = genGrid(this.answer);
-    this.setState({history: [ARRZERO], grid: ARRZERO})
-  }
+    newGame() {
+        this.answer = genAnswerGrid();
+        this.grid = genGrid(this.answer);
+        this.setState({ history: [ARRZERO], grid: ARRZERO })
+    }
 
-  render() {
-    const currentGrid = this.state.grid;
-    const rowSumAnswer = this.rowSumAnswer();
-    const colSumAnswer = this.colSumAnswer();
-    const rowSumGrid = currentGrid.map(sumRow);
-    const colSumGrid = _.zip(...currentGrid).map(sumRow);
-    const rowBooleanArr = rowSumAnswer.map((val, i) => val === rowSumGrid[i]);
-    const colBooleanArr = colSumAnswer.map((val, i) => val === colSumGrid[i]);
-    const completed = [...rowBooleanArr, ...colBooleanArr].every(isTrue);
+    render() {
+        const currentGrid = this.state.grid;
+        const rowSumAnswer = this.rowSumAnswer();
+        const colSumAnswer = this.colSumAnswer();
+        const rowSumGrid = currentGrid.map(sumRow);
+        const colSumGrid = _.zip(...currentGrid).map(sumRow);
+        const rowBooleanArr = rowSumAnswer.map((val, i) => val === rowSumGrid[i]);
+        const colBooleanArr = colSumAnswer.map((val, i) => val === colSumGrid[i]);
+        const completed = [...rowBooleanArr, ...colBooleanArr].every(isTrue);
 
-    return (
-      <div>
-        <div className="grid">
-          {this.grid.map((row, i) =>
-            <div className="row" key={'div' + i}>
-              {row.map((value, j) =>
-                <CheckBox
-                  key={`checkbox${i}${j}`} 
-                  value={value} 
-                  name={`${i}${j}`} 
-                  onChange={this.handleChange} 
-                  checked={this.state.grid[i][j] !== 0}/>
+        return (
+            <Fragment>
+        <main>
+          <div>
+            <div className="grid">
+              {this.grid.map((row, i) =>
+                <div className="row" key={'div' + i}>
+                  {row.map((value, j) =>
+                    <CheckBox
+                      key={`checkbox${i}${j}`} 
+                      value={value} 
+                      name={`${i}${j}`} 
+                      onChange={this.handleChange} 
+                      checked={this.state.grid[i][j] !== 0}/>
+                  )}
+                </div>
               )}
             </div>
-          )}
-        </div>
-        <div className="row-answer">
-            {rowSumAnswer.map((val, i) => 
-              <div 
-                key={'rowAns' + i} 
-                className="row-sum" 
-                style={rowBooleanArr[i] ? CORRECT : INCORRECT}>
+            <div className="row-sum">
+              {rowSumAnswer.map((val, i) => 
+                <div 
+                  key={'rowAns' + i} 
+                  className={rowBooleanArr[i] ? "sum correct" : "sum"}
+                >
                   {val}
-              </div>
-            )}
-        </div>
-        <div className="col-answer">
-          {colSumAnswer.map((val,i) => 
-            <div 
-              key={'colAns'+i} 
-              className="col-sum" 
-              style={colBooleanArr[i] ? CORRECT : INCORRECT}>
-                {val}
+                </div>
+              )}
             </div>
-          )}
-        </div>
+            <div className="col-sum">
+              {colSumAnswer.map((val, i) => 
+                <div
+                  key={'colAns' + i}
+                  className={colBooleanArr[i] ? "sum correct" : "sum"}
+                >
+                  {val}
+                </div>
+              )}
+            </div>
+          </div>
+        </main>
         <div className='button-group'>
           <button onClick={this.undo} disabled={this.state.history.length === 1}>Undo</button>
           <button onClick={this.reset}>Reset</button>
@@ -134,9 +135,9 @@ class App extends React.Component {
             </div>
           </Modal>
         }
-      </div>
-    )
-  }
+      </Fragment>
+        )
+    }
 }
 
 export default App;
