@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/rullo-clone/static/css/main.f951bbd7.chunk.css",
+    "main.css": "/rullo-clone/static/css/main.6192dccf.chunk.css",
     "main.js": "/rullo-clone/static/js/main.a0a30a3a.chunk.js",
     "main.js.map": "/rullo-clone/static/js/main.a0a30a3a.chunk.js.map",
     "runtime-main.js": "/rullo-clone/static/js/runtime-main.d071816c.js",
@@ -8,15 +8,15 @@
     "static/js/2.a91aa3d0.chunk.js": "/rullo-clone/static/js/2.a91aa3d0.chunk.js",
     "static/js/2.a91aa3d0.chunk.js.map": "/rullo-clone/static/js/2.a91aa3d0.chunk.js.map",
     "index.html": "/rullo-clone/index.html",
-    "precache-manifest.506c63546f1c4a351211b26438cbfb76.js": "/rullo-clone/precache-manifest.506c63546f1c4a351211b26438cbfb76.js",
+    "precache-manifest.dd7a6d57bcd006de1df1ebbbc5cc80f8.js": "/rullo-clone/precache-manifest.dd7a6d57bcd006de1df1ebbbc5cc80f8.js",
     "service-worker.js": "/rullo-clone/service-worker.js",
-    "static/css/main.f951bbd7.chunk.css.map": "/rullo-clone/static/css/main.f951bbd7.chunk.css.map",
+    "static/css/main.6192dccf.chunk.css.map": "/rullo-clone/static/css/main.6192dccf.chunk.css.map",
     "static/js/2.a91aa3d0.chunk.js.LICENSE.txt": "/rullo-clone/static/js/2.a91aa3d0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d071816c.js",
     "static/js/2.a91aa3d0.chunk.js",
-    "static/css/main.f951bbd7.chunk.css",
+    "static/css/main.6192dccf.chunk.css",
     "static/js/main.a0a30a3a.chunk.js"
   ]
 }
